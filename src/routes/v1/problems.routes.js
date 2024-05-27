@@ -1,21 +1,23 @@
 const express = require('express');
 
-const { ProblemController } = require('../../controllers');
+const { problemController } = require('../../controllers');
 
 
 const problemRouter = express.Router();
 
-problemRouter.get('/ping', ProblemController.pingProblemController);
 
-problemRouter.get('/:id', ProblemController.getProblem);
+// If any request comes and route continous with /ping, we map it to pingProblemController
+problemRouter.get('/ping', problemController.pingProblemController);
 
-problemRouter.get('/', ProblemController.getProblems);
+problemRouter.get('/:id', problemController.getProblem);
 
-problemRouter.post('/', ProblemController.addProblem);
+problemRouter.get('/', problemController.getProblems);
 
-problemRouter.delete('/:id', ProblemController.deleteProblem);
+problemRouter.post('/', problemController.addProblem);
 
-problemRouter.put('/:id', ProblemController.updateProblem);
+problemRouter.delete('/:id', problemController.deleteProblem);
+
+problemRouter.put('/:id', problemController.updateProblem);
 
 
 module.exports = problemRouter;
