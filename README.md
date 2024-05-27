@@ -6,7 +6,7 @@
 
 ## how routing is working in the project
 - /api/v1/probelms/ping
-   - becouse the route starts with /api
+   - becouse the route starts with.
         /api      --> /v1     --> /problems     --> /ping
         apiRouter --> v1Router --> problemRouter --> problemController   ==> service layer
 
