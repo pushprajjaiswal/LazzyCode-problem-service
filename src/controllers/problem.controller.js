@@ -1,36 +1,58 @@
-const { StatusCodes } = require('http-status-codes');
+const { StatusCodes, BAD_REQUEST } = require('http-status-codes');
+const NotFoundError = require('../errors/NotFoundError');
+const NotImplemented = require('../errors/notimplemented.error');
 
 function pingProblemController(req, res) {
     return res.json({message : 'Problem controller up'});
 }
 
-function addProblem(req, res) {
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not implemented'
-    });
+function addProblem(req, res, next) {
+    try{
+        // nothing implemented
+        throw new NotImplemented('addProblem');
+    }catch(error){
+        next(error);
+        // if we not put next it never be return response it stuck 
+    }
 }
 function getProblem(req, res) {
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not implemented'
-    });
+    try{
+        // nothing implemented
+        throw new NotImplemented('addProblem');
+    }catch(error){
+        next(error);
+        // if we not put next it never be return response it stuck 
+    }
 }
 
 function getProblems(req, res){
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not implemented'
-    });
+    try{
+        // nothing implemented
+        throw new NotImplemented('addProblem');
+    }catch(error){
+        next(error);
+        // if we not put next it never be return response it stuck 
+    }
 }
 
 function deleteProblem(req, res) {
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not implemented'
-    });
+    try{
+        // nothing implemented
+        throw new NotImplemented('addProblem');
+    }catch(error){
+        next(error);
+        // if we not put next it never be return response it stuck 
+    }
 }
 
 function updateProblem(req ,res) {
-    return res.status(StatusCodes.NOT_IMPLEMENTED).json({
-        message : 'Not implemented'
-    });
+    try{
+        // nothing implemented
+        throw new NotImplemented('addProblem');
+    }catch(error){
+        next(error);
+        // if we not put next it never be return response it stuck 
+    }
 }
 
 module.exports = {
