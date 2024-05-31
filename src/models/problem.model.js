@@ -33,6 +33,7 @@ const problemSchema = new mongoose.Schema({
 });
 
 const Problem = mongoose.model('problem', problemSchema);
-
+// using mongoose model we query in  database
+// create a problem object which using this problem obejct we execute the orm or odm Querioes.
 
 module.exports = Problem;
