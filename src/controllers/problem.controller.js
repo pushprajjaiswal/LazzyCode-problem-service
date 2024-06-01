@@ -26,7 +26,7 @@ async function addProblem(req, res, next) {
 }
 
 
-function getProblem(req, res) {
+function getProblem(req, res, next) {
     try{
         // nothing implemented
         throw new NotImplemented('addProblem');
@@ -36,13 +36,18 @@ function getProblem(req, res) {
     }
 }
 
-function getProblems(req, res){
+async function getProblems(req, res, next){
     try{
-        // nothing implemented
-        throw new NotImplemented('addProblem');
+        const response = await problemService.getAllProblems();
+        
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: 'Successfully fetched all the problem',
+            error: {},
+            data: response
+        });
     }catch(error){
-        next(error);
-        // if we not put next it never be return response it stuck 
+        next(error); 
     }
 }
 

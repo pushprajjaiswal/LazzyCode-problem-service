@@ -21,7 +21,10 @@ class ProblemService {
             return problem;
     }
 
-    
+    async getAllProblems(){
+        const problems = await this.problemRepository.getAllProblems();
+        return problems;
+    }
 
 }
 
