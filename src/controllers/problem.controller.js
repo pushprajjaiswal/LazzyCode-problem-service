@@ -12,7 +12,6 @@ function pingProblemController(req, res) {
 
 async function addProblem(req, res, next) {
     try {
-        console.log("incoming req body", req.body);
         const newproblem = await problemService.createProblem(req.body);
         return res.status(StatusCodes.CREATED).json({
             success: true,
@@ -26,10 +25,15 @@ async function addProblem(req, res, next) {
 }
 
 
-function getProblem(req, res, next) {
+async function getProblem(req, res, next) {
     try{
-        // nothing implemented
-        throw new NotImplemented('addProblem');
+        const problem = await problemService.getProblem(req.params.id);
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            message: 'Successfully retrieved a problem',
+            error: {},
+            data: problem
+        });
     }catch(error){
         next(error);
         // if we not put next it never be return response it stuck 

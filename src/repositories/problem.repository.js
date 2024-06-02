@@ -1,4 +1,6 @@
+const { NOT_FOUND } = require('http-status-codes');
 const { Problem } = require('../models');
+const NotFound = require('../errors/notfound.error');
 
 class ProblemRepository {
 
@@ -9,8 +11,8 @@ class ProblemRepository {
                 description: problemData.description,
                 testCases : (problemData.testCases) ? problemData.testCases :[]
             });
-
             return problem;
+            
         } catch(error){
             console.log(error);
             throw error;
@@ -27,7 +29,19 @@ class ProblemRepository {
         }
     }
 
-    
+    async getProblem(id){
+        try {
+            console.log(id);
+            const problem = await Problem.findById(id);
+            if(!problem){
+                throw new NotFound("problem", id);
+            }
+            return problem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }
 
 module.exports = ProblemRepository;
