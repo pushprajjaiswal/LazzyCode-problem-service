@@ -16,14 +16,14 @@ allowedTransports.push(new winston.transports.Console({
     )
 }));
 
-// The below transport configuration enabkes logging in mongdb database
+// The below transport configuration enables logging in mongdb database
 allowedTransports.push(new winston.transports.MongoDB({
     level: 'error',
     db: LOG_DB_URL,
     collection: 'logs'
 }));
 
-// The below transport configuration enavles logging in mongodb databse
+// The below transport configuration enables logging in file
 allowedTransports.push(new winston.transports.File({
     filename: 'logFile.log',
     level: 'error'
