@@ -1,6 +1,7 @@
 const { NOT_FOUND } = require('http-status-codes');
 const { Problem } = require('../models');
 const NotFound = require('../errors/notfound.error');
+const logger = require('../config/logger.config');
 
 class ProblemRepository {
 
@@ -37,6 +38,20 @@ class ProblemRepository {
                 throw new NotFound("problem", id);
             }
             return problem;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    }
+
+    async deleteProblem(id) {
+        try {
+            const deletedProblem = await Problem.findByIdAndDelete(id);
+            if(!deletedProblem){
+                logger.error(`Problem with id: ${id} not found in the db`)
+                throw new NotFound("problem", id);
+            }
+            return deletedProblem;
         } catch (error) {
             console.log(error);
             throw error;
